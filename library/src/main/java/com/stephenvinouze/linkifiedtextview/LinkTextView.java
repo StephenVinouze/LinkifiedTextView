@@ -17,8 +17,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.stephenvinouze.linktextview.R;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;

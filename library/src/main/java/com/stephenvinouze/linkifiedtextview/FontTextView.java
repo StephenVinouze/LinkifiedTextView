@@ -6,8 +6,6 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import com.stephenvinouze.linktextview.R;
-
 /**
  * Created by Stephen Vinouze on 16/10/15.
  */
