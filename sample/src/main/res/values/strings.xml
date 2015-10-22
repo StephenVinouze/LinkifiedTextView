@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">LinkifiedTextView</string>
+    <string name="link_name">LinkTextView</string>
+    <string name="font_name">FontTextView</string>
+
+    <string name="link_menu">LinkTextViews</string>
+    <string name="font_menu">FontTextViews</string>
+
     <string name="web_link_text">This a an example that wraps an underlined url https://github.com/StephenVinouze/LinkifiedTextView in the middle of the sentence</string>
     <string name="hashtag_link_text">Here is a text containing several #hashtags such as #github or #LinkifiedTextView</string>
-    <string name="combined_links_text">You can combine different types of #links with screennames @GitHub or emails somemail@mail.com</string>
+    <string name="combined_links_text">You can even detect different types of #links with screennames @GitHub or emails somemail@mail.com and customize the link color</string>
+
+    <string name="default_font_text">This is a text with the default Android font</string>
+    <string name="custom_font_text">This is a text with a custom font defined in assets/fonts</string>
+    <string name="icon_font_text">These following icons are generated via FontTextView using a iconic font and customized using color/size\'s TextView properties</string>
 </resources>

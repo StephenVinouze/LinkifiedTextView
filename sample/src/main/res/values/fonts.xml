@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="font_text_name">Abel-Regular.ttf</string>
+    <string name="font_icon_name">icomoon.ttf</string>
+
+    <string name="icon_map">\ue601</string>
+    <string name="icon_location">\ue602</string>
+    <string name="icon_target">\ue600</string>
+    <string name="icon_compass">\ue643</string>
+    <string name="icon_gps">\ue603</string>
+    <string name="icon_search">\ue605</string>
+    <string name="icon_settings">\ue606</string>
+</resources>

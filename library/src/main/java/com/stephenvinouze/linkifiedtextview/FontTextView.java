@@ -20,7 +20,7 @@ public class FontTextView extends TextView {
     public FontTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LinkTextView);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.FontTextView);
 
         for (int i = 0; i < a.getIndexCount(); ++i) {
 
