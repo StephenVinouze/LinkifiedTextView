@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">LinkifiedTextView</string>
-    <string name="web_link_text">This a an example that wraps an url https://github.com/StephenVinouze/LinkifiedTextView in the middle of the sentence</string>
-    <string name="hashtag_link_text">Here is a text continaining several #hashtags such as #github or #LinkifiedTextView</string>
+    <string name="web_link_text">This a an example that wraps an underlined url https://github.com/StephenVinouze/LinkifiedTextView in the middle of the sentence</string>
+    <string name="hashtag_link_text">Here is a text containing several #hashtags such as #github or #LinkifiedTextView</string>
     <string name="combined_links_text">You can combine different types of #links with screennames @GitHub or emails somemail@mail.com</string>
 </resources>

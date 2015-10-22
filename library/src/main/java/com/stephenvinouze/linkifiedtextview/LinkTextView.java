@@ -45,6 +45,7 @@ public class LinkTextView extends TextView {
         int start;
         int end;
         int color;
+        boolean underline;
     }
 
     private Pattern hashtagPattern = Pattern.compile("(#\\w+)");
@@ -55,6 +56,7 @@ public class LinkTextView extends TextView {
 
     private int mLinkType = LINK_TYPE_NONE;
     private int mLinkTextColor = Color.BLUE;
+    private boolean mLinkUnderline = false;
     private boolean mHitLink = false;
 
     private List<Hyperlink> mLinks = new ArrayList<>();
@@ -79,6 +81,9 @@ public class LinkTextView extends TextView {
             }
             else if (attr == R.styleable.LinkTextView_tvLinkTextColor) {
                 setLinkColor(a.getColor(attr, mLinkTextColor));
+            }
+            else if (attr == R.styleable.LinkTextView_tvLinkTextUnderline) {
+                setLinkUnderline(a.getBoolean(attr, false));
             }
             else if (attr == R.styleable.LinkTextView_tvLinkType) {
                 setLinkType(a.getInt(attr, LINK_TYPE_NONE));
@@ -106,6 +111,10 @@ public class LinkTextView extends TextView {
 
     public void setLinkColor(int color) {
         mLinkTextColor = color;
+    }
+
+    public void setLinkUnderline(boolean underline) {
+        mLinkUnderline = underline;
     }
 
     public void setLinkText(String text) {
@@ -161,7 +170,8 @@ public class LinkTextView extends TextView {
             link.type = type;
             link.textSpan = s.subSequence(start, end);
             link.color = mLinkTextColor;
-            link.span = new InternalURLSpan(link.textSpan.toString(), link.type, link.color);
+            link.underline = mLinkUnderline;
+            link.span = new InternalURLSpan(link.textSpan.toString(), link.type, link.color, link.underline);
             link.start = start;
             link.end = end;
 
@@ -190,18 +200,20 @@ public class LinkTextView extends TextView {
         private String clickedSpan;
         private int clickedType;
         private int clickedColor;
+        private boolean clickedUnderline;
 
-        public InternalURLSpan(String span, int type, int color) {
+        public InternalURLSpan(String span, int type, int color, boolean underline) {
             clickedSpan = span;
             clickedType = type;
             clickedColor = color;
+            clickedUnderline = underline;
         }
 
         @Override
         public void updateDrawState(TextPaint ds) {
             ds.bgColor = Color.TRANSPARENT;
             ds.setColor(clickedColor);
-            ds.setUnderlineText(true);
+            ds.setUnderlineText(clickedUnderline);
         }
 
         @Override

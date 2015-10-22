@@ -8,6 +8,7 @@
     <declare-styleable name="LinkTextView">
         <attr name="tvLinkText" format="string" />
         <attr name="tvLinkTextColor" format="color" />
+        <attr name="tvLinkTextUnderline" format="boolean" />
         <attr name="tvLinkType" format="integer">
             <flag name="none" value="0" />
             <flag name="web" value="1" />

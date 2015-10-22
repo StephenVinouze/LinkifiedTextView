@@ -18,7 +18,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:tvLinkText="@string/web_link_text"
-            app:tvLinkType="web"/>
+            app:tvLinkType="web"
+            app:tvLinkTextUnderline="true"/>
 
         <com.stephenvinouze.linkifiedtextview.LinkTextView
             android:id="@+id/hashtags_link"
