@@ -3,6 +3,27 @@ This library intends to leverage what [Linkify](http://developer.android.com/ref
 
 It also comes with an utility [TextView](http://developer.android.com/reference/android/widget/TextView.html) class that lets you easily define your custom fonts. This comes very handy while using iconic fonts!
 
+## Download
+
+Gradle:
+
+``
+compile 'com.stephenvinouze.linkifiedtextview:1.1.0'
+``
+
+Maven:
+
+```
+<dependency>
+  <groupId>com.github.stephenvinouze</groupId>
+  <artifactId>linkifiedtextview</artifactId>
+  <version>1.0.1</version>
+  <type>aar</type>
+</dependency>
+```
+
+Eclipse: [linkifiedtextview-1.0.1.aar](https://github.com/StephenVinouze/LinkifiedTextView/releases/download/1.0.1/linkifiedtextview-1.0.1.aar)
+
 # Usage
 
 ## TextView with custom fonts
