@@ -17,10 +17,7 @@ bintray {
         publicDownloadNumbers = true
         version {
             name = VERSION_NAME
-//            gpg {
-//                sign = true
-//                passphrase = signing.password
-//            }
+            desc = POM_DESCRIPTION
         }
     }
 }
@@ -31,6 +28,7 @@ install {
             project {
                 name POM_NAME
                 packaging PACKAGING
+                description POM_DESCRIPTION
                 url POM_URL
 
                 scm {
