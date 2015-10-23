@@ -15,8 +15,7 @@
             <flag name="hashtag" value="2" />
             <flag name="screenname" value="4" />
             <flag name="email" value="8" />
-            <flag name="phone" value="16" />
-            <flag name="all" value="31" />
+            <flag name="all" value="15" />
         </attr>
     </declare-styleable>
 

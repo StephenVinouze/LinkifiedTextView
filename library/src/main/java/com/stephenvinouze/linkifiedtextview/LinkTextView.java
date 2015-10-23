@@ -29,8 +29,7 @@ public class LinkTextView extends TextView {
     public static final int LINK_TYPE_HASHTAG = 1<<1;
     public static final int LINK_TYPE_SCREENNAME = 1<<2;
     public static final int LINK_TYPE_EMAIL = 1<<3;
-    public static final int LINK_TYPE_PHONE = 1<<4;
-    public static final int LINK_TYPE_ALL = LINK_TYPE_WEB | LINK_TYPE_HASHTAG | LINK_TYPE_SCREENNAME | LINK_TYPE_EMAIL | LINK_TYPE_PHONE;
+    public static final int LINK_TYPE_ALL = LINK_TYPE_WEB | LINK_TYPE_HASHTAG | LINK_TYPE_SCREENNAME | LINK_TYPE_EMAIL;
 
     public interface OnLinkClickListener {
         void onLinkClick(View textView, String link, int type);
@@ -50,7 +49,6 @@ public class LinkTextView extends TextView {
     private Pattern screenNamePattern = Pattern.compile("(@\\w+)");
     private Pattern hyperlinkPattern = Pattern.compile("([Hh][tT][tT][pP][sS]?://[^ ,'\">\\]\\)]*[^\\. ,'\">\\]\\)])");
     private Pattern emailPattern = Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
-    private Pattern phonePattern = Pattern.compile("(0[1-68][-.\\s]?(\\d{2}[-.\\s]?){3}\\d{2})");
 
     private int mLinkType = LINK_TYPE_NONE;
     private int mLinkTextColor = Color.BLUE;
@@ -129,9 +127,6 @@ public class LinkTextView extends TextView {
         }
         if (containsLinkType(LINK_TYPE_EMAIL)) {
             gatherLinks(text, emailPattern, LINK_TYPE_EMAIL);
-        }
-        if (containsLinkType(LINK_TYPE_PHONE)) {
-            gatherLinks(text, phonePattern, LINK_TYPE_PHONE);
         }
 
         SpannableString linkableText = new SpannableString(text);

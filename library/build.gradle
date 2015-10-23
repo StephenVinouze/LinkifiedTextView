@@ -39,7 +39,7 @@ bintray {
 install {
     repositories.mavenInstaller {
         pom.groupId = GROUP
-        pom.artifactId = POM_ARTIFACT_ID
+        pom.artifactId = ARTIFACT_ID
         pom.version = VERSION_NAME
         pom.project {
             name POM_NAME

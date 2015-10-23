@@ -36,6 +36,15 @@
             android:layout_marginTop="20dp"
             app:tvLinkText="@string/combined_links_text"
             app:tvLinkTextColor="@color/colorAccent"
+            app:tvLinkType="hashtag|screenname"/>
+
+        <com.stephenvinouze.linkifiedtextview.LinkTextView
+            android:id="@+id/all_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:tvLinkText="@string/all_links_text"
+            app:tvLinkTextColor="@color/colorLink"
             app:tvLinkType="all"/>
     </LinearLayout>
 

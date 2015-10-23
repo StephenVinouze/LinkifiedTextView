@@ -8,7 +8,8 @@
 
     <string name="web_link_text">This a an example that wraps an underlined url https://github.com/StephenVinouze/LinkifiedTextView in the middle of the sentence</string>
     <string name="hashtag_link_text">Here is a text containing several #hashtags such as #github or #LinkifiedTextView</string>
-    <string name="combined_links_text">You can even detect different types of #links with screennames @GitHub or emails somemail@mail.com and customize the link color</string>
+    <string name="combined_links_text">You can even detect #hashtags or @screennames at the same time and customize the links color</string>
+    <string name="all_links_text">You can choose to detect all currently supported link types: https://someurl.com, #hashtags, @screennames, somemail@mail.com</string>
 
     <string name="default_font_text">This is a text with the default Android font</string>
     <string name="custom_font_text">This is a text with a custom font defined in assets/fonts</string>
