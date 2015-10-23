@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.text.Layout;
-import android.text.Selection;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextPaint;
@@ -38,7 +37,7 @@ public class LinkTextView extends TextView {
     private class Hyperlink {
         int type;
         CharSequence textSpan;
-        InternalURLSpan span;
+        LinkSpan span;
         int start;
         int end;
         int color;
@@ -164,7 +163,7 @@ public class LinkTextView extends TextView {
             link.textSpan = s.subSequence(start, end);
             link.color = mLinkTextColor;
             link.underline = mLinkUnderline;
-            link.span = new InternalURLSpan(link.textSpan.toString(), link.type, link.color, link.underline);
+            link.span = new LinkSpan(link.textSpan.toString(), link.type, link.color, link.underline);
             link.start = start;
             link.end = end;
 
@@ -188,38 +187,37 @@ public class LinkTextView extends TextView {
         return res;
     }
 
-    public class InternalURLSpan extends ClickableSpan {
+    public class LinkSpan extends ClickableSpan {
 
-        private String clickedSpan;
-        private int clickedType;
-        private int clickedColor;
-        private boolean clickedUnderline;
+        private String mLinkText;
+        private int mType;
+        private int mColor;
+        private boolean mUnderline;
 
-        public InternalURLSpan(String span, int type, int color, boolean underline) {
-            clickedSpan = span;
-            clickedType = type;
-            clickedColor = color;
-            clickedUnderline = underline;
+        public LinkSpan(String linkText, int type, int color, boolean underline) {
+            mLinkText = linkText;
+            mType = type;
+            mColor = color;
+            mUnderline = underline;
         }
 
         @Override
         public void updateDrawState(TextPaint ds) {
             ds.bgColor = Color.TRANSPARENT;
-            ds.setColor(clickedColor);
-            ds.setUnderlineText(clickedUnderline);
+            ds.setColor(mColor);
+            ds.setUnderlineText(mUnderline);
         }
 
         @Override
         public void onClick(View textView) {
             if (mListener != null) {
-                mListener.onLinkClick(textView, clickedSpan, clickedType);
+                mListener.onLinkClick(textView, mLinkText, mType);
             }
         }
     }
 
     public static class LocalLinkMovementMethod extends LinkMovementMethod {
         static LocalLinkMovementMethod sInstance;
-
 
         public static LocalLinkMovementMethod getInstance() {
             if (sInstance == null)
@@ -246,13 +244,9 @@ public class LinkTextView extends TextView {
                 int off = layout.getOffsetForHorizontal(line, x);
 
                 ClickableSpan[] link = buffer.getSpans(off, off, ClickableSpan.class);
-
                 if (link.length != 0) {
                     if (action == MotionEvent.ACTION_UP) {
                         link[0].onClick(widget);
-                    }
-                    else {
-                        Selection.setSelection(buffer, buffer.getSpanStart(link[0]), buffer.getSpanEnd(link[0]));
                     }
 
                     if (widget instanceof LinkTextView) {
@@ -261,7 +255,6 @@ public class LinkTextView extends TextView {
                     return true;
                 }
                 else {
-                    Selection.removeSelection(buffer);
                     Touch.onTouchEvent(widget, buffer, event);
                     return false;
                 }
