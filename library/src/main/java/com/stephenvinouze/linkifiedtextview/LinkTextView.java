@@ -246,7 +246,7 @@ public class LinkTextView extends TextView {
                 ClickableSpan[] link = buffer.getSpans(off, off, ClickableSpan.class);
                 if (link.length != 0) {
                     if (action == MotionEvent.ACTION_UP) {
-                        link[0].onClick(widget);
+                        link[link.length - 1].onClick(widget);
                     }
 
                     if (widget instanceof LinkTextView) {
