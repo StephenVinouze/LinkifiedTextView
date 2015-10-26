@@ -3,7 +3,10 @@ This library intends to leverage what [Linkify](http://developer.android.com/ref
 
 It also comes with an utility [TextView](http://developer.android.com/reference/android/widget/TextView.html) class that lets you easily define your custom fonts. This comes very handy while using iconic fonts!
 
-## Download
+![alt tag](images/link_text_view.png)
+![alt tag](images/font_text_view.png)
+
+# Download
 
 Gradle:
 
@@ -26,6 +29,18 @@ Eclipse: [linkifiedtextview-1.0.1.aar](https://github.com/StephenVinouze/Linkifi
 
 # Usage
 
+## TextView that detects links
+Detecting links inside your TextView can be achieved by using the **LinkTextView** class
+
+```
+<com.stephenvinouze.linkifiedtextview.LinkTextView
+            android:id="@+id/combined_link"
+            android:layout_width="wrap_content"
+            app:tvLinkText="<your_link_text>" // Mandatory : If you want the links to be detected you must use this property
+            app:tvLinkTextColor="<your_link_color>" // Optional : default is Color.BLUE
+            app:tvLinkType="<your_link_type>"/> // Optional : default is none, can be a combination of web|hashtag|screenname|email or all
+```
+
 ## TextView with custom fonts
 If you need to use a custom font that you previously added in your assets folder, use the **FontTextView** class :
 
@@ -38,17 +53,8 @@ If you need to use a custom font that you previously added in your assets folder
             app:tvFontName="<your_font_name>.<font_name_extension>"/>
 ```
 
-## TextView that detects links
-Detecting links inside your TextView can be achieved by using the **LinkTextView** class. Note that this class inherits the **FontTextView** class that lets you easily define custom fonts.
-
-```
-<com.stephenvinouze.linkifiedtextview.LinkTextView
-            android:id="@+id/combined_link"
-            android:layout_width="wrap_content"
-            app:tvLinkText="<your_link_text>" // Mandatory : If you want the links to be detected you must use this property
-            app:tvLinkTextColor="<your_link_color>" // Optional : default is Color.BLUE
-            app:tvLinkType="<your_link_type>"/> // Optional : default is none, can be a combination of web|hashtag|screenname|email or all
-```
+## Note
+**LinkTextView** inherits from **FontTextView** so you can easily customize your font as well as detecting link using **LinkTextView**.
 
 # License
 
