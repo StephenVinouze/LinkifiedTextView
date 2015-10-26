@@ -30,19 +30,30 @@ Eclipse: [linkifiedtextview-1.0.1.aar](https://github.com/StephenVinouze/Linkifi
 # Usage
 
 ## TextView that detects links
-Detecting links inside your TextView can be achieved by using the **LinkTextView** class
+Detecting links inside your TextView can be achieved by using the `LinkTextView` class
 
 ```
 <com.stephenvinouze.linkifiedtextview.LinkTextView
-            android:id="@+id/combined_link"
+            android:id="@+id/web_link"
             android:layout_width="wrap_content"
             app:tvLinkText="<your_link_text>" // Mandatory : If you want the links to be detected you must use this property
             app:tvLinkTextColor="<your_link_color>" // Optional : default is Color.BLUE
             app:tvLinkType="<your_link_type>"/> // Optional : default is none, can be a combination of web|hashtag|screenname|email or all
 ```
+You can listen to link click events using the `OnLinkClickListener` interface
+
+```
+LinkTextView webLink = (LinkTextView)findViewById(R.id.web_link);
+webLink.setOnLinkClickListener(new OnLinkClickListener() {
+    @Override
+    public void onLinkClick(View textView, String link, int type) {
+        // Do whatever you need here using the link content and its type
+    }
+});
+```
 
 ## TextView with custom fonts
-If you need to use a custom font that you previously added in your assets folder, use the **FontTextView** class :
+If you need to use a custom font that you previously added in your assets folder, use the `FontTextView` class
 
 ```
 <com.stephenvinouze.linkifiedtextview.FontTextView
@@ -54,7 +65,7 @@ If you need to use a custom font that you previously added in your assets folder
 ```
 
 ## Note
-**LinkTextView** inherits from **FontTextView** so you can easily customize your font as well as detecting link using **LinkTextView**.
+`LinkTextView` inherits from **FontTextView** so you can easily customize your font as well as detecting link using `LinkTextView`.
 
 # License
 
