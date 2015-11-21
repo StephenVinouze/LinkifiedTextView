@@ -36,6 +36,7 @@ Detecting links inside your TextView can be achieved by using the `LinkTextView`
 <com.stephenvinouze.linkifiedtextview.LinkTextView
             android:id="@+id/web_link"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:tvLinkText="<your_link_text>" // Mandatory : If you want the links to be detected you must use this property
             app:tvLinkTextColor="<your_link_color>" // Optional : default is Color.BLUE
             app:tvLinkType="<your_link_type>"/> // Optional : default is none, can be a combination of web|hashtag|screenname|email or all
