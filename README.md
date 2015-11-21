@@ -10,9 +10,9 @@ It also comes with an utility [TextView](http://developer.android.com/reference/
 
 Gradle:
 
-``
+```
 compile 'com.github.stephenvinouze:linkifiedtextview:1.0.1'
-``
+```
 
 Maven:
 
