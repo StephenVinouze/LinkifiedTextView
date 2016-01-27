@@ -1,6 +1,8 @@
 # LinkifiedTextView
 This library intends to leverage what [Linkify](http://developer.android.com/reference/android/text/util/Linkify.html) does but directly embedded inside a TextView with some preconfigured detectable link types.
 
+Moreover, `Linkify` has a most often unwanted behavior that intercept touches inside the whole `TextView` instead of only the links that matches the activated link types. Hence, using `Linkify` results in a nearly non-clickable view. This is particularly annoying while working with a list of items that contains a big `TextView` inside.
+
 It also comes with an utility [TextView](http://developer.android.com/reference/android/widget/TextView.html) class that lets you easily define your custom fonts. This comes very handy while using iconic fonts!
 
 ![alt tag](images/link_text_view.png)
