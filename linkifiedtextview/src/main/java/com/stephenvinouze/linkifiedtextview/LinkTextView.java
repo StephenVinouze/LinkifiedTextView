@@ -12,6 +12,7 @@ import android.text.method.MovementMethod;
 import android.text.method.Touch;
 import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
+import android.util.Patterns;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -44,18 +45,18 @@ public class LinkTextView extends TextView {
         boolean underline;
     }
 
+    private Pattern hyperlinkPattern = Patterns.WEB_URL;
+    private Pattern emailPattern = Patterns.EMAIL_ADDRESS;
     private Pattern hashtagPattern = Pattern.compile("(#\\w+)");
     private Pattern screenNamePattern = Pattern.compile("(@\\w+)");
-    private Pattern hyperlinkPattern = Pattern.compile("([Hh][tT][tT][pP][sS]?://[^ ,'\">\\]\\)]*[^\\. ,'\">\\]\\)])");
-    private Pattern emailPattern = Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
 
-    private int mLinkType = LINK_TYPE_NONE;
-    private int mLinkTextColor = Color.BLUE;
-    private boolean mLinkUnderline = false;
-    private boolean mHitLink = false;
+    private int linkType = LINK_TYPE_NONE;
+    private int linkTextColor = Color.BLUE;
+    private boolean linkUnderline = false;
+    private boolean hitLink = false;
 
-    private List<Hyperlink> mLinks = new ArrayList<>();
-    private OnLinkClickListener mListener;
+    private List<Hyperlink> links = new ArrayList<>();
+    private OnLinkClickListener listener;
 
 	public LinkTextView(Context context) {
 		super(context);
@@ -75,7 +76,7 @@ public class LinkTextView extends TextView {
                 linkText = a.getString(attr);
             }
             else if (attr == R.styleable.LinkTextView_tvLinkTextColor) {
-                setLinkColor(a.getColor(attr, mLinkTextColor));
+                setLinkColor(a.getColor(attr, linkTextColor));
             }
             else if (attr == R.styleable.LinkTextView_tvLinkTextUnderline) {
                 setLinkUnderline(a.getBoolean(attr, false));
@@ -93,27 +94,27 @@ public class LinkTextView extends TextView {
 	}
 
     public void setOnLinkClickListener(OnLinkClickListener listener) {
-        mListener = listener;
+        this.listener = listener;
     }
 
     public boolean isDetectingLinks() {
-        return mLinkType != LINK_TYPE_NONE;
+        return linkType != LINK_TYPE_NONE;
     }
 
     public void setLinkType(int type) {
-        mLinkType = type;
+        linkType = type;
     }
 
     public void setLinkColor(int color) {
-        mLinkTextColor = color;
+        linkTextColor = color;
     }
 
     public void setLinkUnderline(boolean underline) {
-        mLinkUnderline = underline;
+        linkUnderline = underline;
     }
 
     public void setLinkText(String text) {
-        mLinks.clear();
+        links.clear();
 
         if (containsLinkType(LINK_TYPE_WEB)) {
             gatherLinks(text, hyperlinkPattern, LINK_TYPE_WEB);
@@ -130,8 +131,8 @@ public class LinkTextView extends TextView {
 
         SpannableString linkableText = new SpannableString(text);
 
-        if (!mLinks.isEmpty()) {
-            for (Hyperlink linkSpec : mLinks) {
+        if (!links.isEmpty()) {
+            for (Hyperlink linkSpec : links) {
                 linkableText.setSpan(linkSpec.span, linkSpec.start, linkSpec.end, 0);
             }
 
@@ -147,7 +148,7 @@ public class LinkTextView extends TextView {
     }
 
     private boolean containsLinkType(int type) {
-        return (mLinkType & type) == type;
+        return (linkType & type) == type;
     }
 
     private void gatherLinks(String s, Pattern pattern, int type) {
@@ -161,13 +162,13 @@ public class LinkTextView extends TextView {
 
             link.type = type;
             link.textSpan = s.subSequence(start, end);
-            link.color = mLinkTextColor;
-            link.underline = mLinkUnderline;
+            link.color = linkTextColor;
+            link.underline = linkUnderline;
             link.span = new LinkSpan(link.textSpan.toString(), link.type, link.color, link.underline);
             link.start = start;
             link.end = end;
 
-            mLinks.add(link);
+            links.add(link);
         }
     }
 
@@ -178,16 +179,16 @@ public class LinkTextView extends TextView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        mHitLink = false;
+        hitLink = false;
         boolean res = super.onTouchEvent(event);
 
         if (isDetectingLinks())
-            return mHitLink;
+            return hitLink;
 
         return res;
     }
 
-    public class LinkSpan extends ClickableSpan {
+    private class LinkSpan extends ClickableSpan {
 
         private String mLinkText;
         private int mType;
@@ -210,13 +211,13 @@ public class LinkTextView extends TextView {
 
         @Override
         public void onClick(View textView) {
-            if (mListener != null) {
-                mListener.onLinkClick(textView, mLinkText, mType);
+            if (listener != null) {
+                listener.onLinkClick(textView, mLinkText, mType);
             }
         }
     }
 
-    public static class LocalLinkMovementMethod extends LinkMovementMethod {
+    private static class LocalLinkMovementMethod extends LinkMovementMethod {
         static LocalLinkMovementMethod sInstance;
 
         public static LocalLinkMovementMethod getInstance() {
@@ -250,7 +251,7 @@ public class LinkTextView extends TextView {
                     }
 
                     if (widget instanceof LinkTextView) {
-                        ((LinkTextView) widget).mHitLink = true;
+                        ((LinkTextView) widget).hitLink = true;
                     }
                     return true;
                 }

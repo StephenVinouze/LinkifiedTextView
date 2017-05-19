@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity">
+    android:padding="@dimen/activity_vertical_margin">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="@string/default_font_text"/>
+            android:text="@string/default_font_text" />
 
         <com.stephenvinouze.linkifiedtextview.FontTextView
             android:id="@+id/custom_font_text"
@@ -26,7 +23,7 @@
             android:layout_below="@id/default_font_text"
             android:padding="10dp"
             android:text="@string/custom_font_text"
-            app:tvFontName="@string/font_text_name"/>
+            app:tvFontName="@string/font_text_name" />
 
         <TextView
             android:id="@+id/icon_font_text"
@@ -34,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/custom_font_text"
             android:padding="10dp"
-            android:text="@string/icon_font_text"/>
+            android:text="@string/icon_font_text" />
 
         <com.stephenvinouze.linkifiedtextview.FontTextView
             android:id="@+id/search_icon_text"
@@ -44,7 +41,7 @@
             android:padding="10dp"
             android:text="@string/icon_search"
             android:textSize="38sp"
-            app:tvFontName="@string/font_icon_name"/>
+            app:tvFontName="@string/font_icon_name" />
 
         <com.stephenvinouze.linkifiedtextview.FontTextView
             android:id="@+id/target_icon_text"
@@ -57,7 +54,7 @@
             android:text="@string/icon_target"
             android:textColor="@color/colorPrimary"
             android:textSize="29sp"
-            app:tvFontName="@string/font_icon_name"/>
+            app:tvFontName="@string/font_icon_name" />
 
         <com.stephenvinouze.linkifiedtextview.FontTextView
             android:id="@+id/gps_icon_text"
@@ -70,7 +67,7 @@
             android:text="@string/icon_gps"
             android:textColor="@color/colorAccent"
             android:textSize="24sp"
-            app:tvFontName="@string/font_icon_name"/>
+            app:tvFontName="@string/font_icon_name" />
     </RelativeLayout>
 
 </ScrollView>

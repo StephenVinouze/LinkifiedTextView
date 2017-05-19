@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity">
+    android:padding="@dimen/activity_vertical_margin">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,8 +15,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:tvLinkText="@string/web_link_text"
-            app:tvLinkType="web"
-            app:tvLinkTextUnderline="true"/>
+            app:tvLinkTextUnderline="true"
+            app:tvLinkType="web" />
 
         <com.stephenvinouze.linkifiedtextview.LinkTextView
             android:id="@+id/hashtags_link"
@@ -27,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             app:tvLinkText="@string/hashtag_link_text"
-            app:tvLinkType="hashtag"/>
+            app:tvLinkType="hashtag" />
 
         <com.stephenvinouze.linkifiedtextview.LinkTextView
             android:id="@+id/combined_link"
@@ -36,7 +33,7 @@
             android:layout_marginTop="20dp"
             app:tvLinkText="@string/combined_links_text"
             app:tvLinkTextColor="@color/colorAccent"
-            app:tvLinkType="hashtag|screenname"/>
+            app:tvLinkType="hashtag|screenname" />
 
         <com.stephenvinouze.linkifiedtextview.LinkTextView
             android:id="@+id/all_link"
@@ -45,7 +42,7 @@
             android:layout_marginTop="20dp"
             app:tvLinkText="@string/all_links_text"
             app:tvLinkTextColor="@color/colorLink"
-            app:tvLinkType="all"/>
+            app:tvLinkType="all" />
     </LinearLayout>
 
 </ScrollView>
