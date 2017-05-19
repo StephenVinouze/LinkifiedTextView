@@ -3,6 +3,7 @@ package com.stephenvinouze.linkifiedtextview;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.support.v7.widget.AppCompatTextView;
 import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -22,7 +23,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LinkTextView extends TextView {
+public class LinkTextView extends AppCompatTextView {
 
     public static final int LINK_TYPE_NONE = 0;
     public static final int LINK_TYPE_WEB = 1;

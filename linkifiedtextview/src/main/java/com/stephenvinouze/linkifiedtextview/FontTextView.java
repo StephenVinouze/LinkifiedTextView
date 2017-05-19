@@ -3,13 +3,13 @@ package com.stephenvinouze.linkifiedtextview;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 /**
  * Created by Stephen Vinouze on 16/10/15.
  */
-public class FontTextView extends TextView {
+public class FontTextView extends AppCompatTextView {
 
     public FontTextView(Context context) {
         super(context);
