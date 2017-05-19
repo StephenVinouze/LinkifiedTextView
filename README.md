@@ -10,24 +10,11 @@ It also comes with an utility [TextView](http://developer.android.com/reference/
 
 # Download
 
-Gradle:
+Under the *dependencies* block in Gradle, add the following line :
 
 ```
-compile 'com.github.stephenvinouze:linkifiedtextview:1.0.1'
+compile 'com.github.stephenvinouze:linkifiedtextview:1.1.0'
 ```
-
-Maven:
-
-```
-<dependency>
-  <groupId>com.github.stephenvinouze</groupId>
-  <artifactId>linkifiedtextview</artifactId>
-  <version>1.0.1</version>
-  <type>aar</type>
-</dependency>
-```
-
-Eclipse: [linkifiedtextview-1.0.1.aar](https://github.com/StephenVinouze/LinkifiedTextView/releases/download/1.0.1/linkifiedtextview-1.0.1.aar)
 
 # Usage
 
