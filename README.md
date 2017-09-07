@@ -14,7 +14,18 @@ It also comes with an utility [TextView](http://developer.android.com/reference/
 
 # Download
 
-Under the *dependencies* block in Gradle, add the following line :
+Add this in your root `build.gradle` file:
+
+```gradle
+allprojects {
+	repositories {
+		// ... other repositories
+		maven { url "https://jitpack.io" }
+	}
+}
+```
+
+Then add the dependencies that you need in your project.
 
 ```
 compile 'com.github.stephenvinouze:linkifiedtextview:{latest_version}'
