@@ -1,3 +1,7 @@
+[![Release](https://jitpack.io/v/StephenVinouze/LinkifiedTextView.svg)](https://jitpack.io/#StephenVinouze/LinkifiedTextView)
+[![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
+[![GitHub license](http://img.shields.io/badge/license-APACHE2-blue.svg)](https://github.com/StephenVinouze/LinkifiedTextView/blob/master/LICENSE)
+
 # LinkifiedTextView
 This library intends to leverage what [Linkify](http://developer.android.com/reference/android/text/util/Linkify.html) does but directly embedded inside a TextView with some preconfigured detectable link types.
 
@@ -13,7 +17,7 @@ It also comes with an utility [TextView](http://developer.android.com/reference/
 Under the *dependencies* block in Gradle, add the following line :
 
 ```
-compile 'com.github.stephenvinouze:linkifiedtextview:1.1.0'
+compile 'com.github.stephenvinouze:linkifiedtextview:{latest_version}'
 ```
 
 # Usage
@@ -47,6 +51,17 @@ If you need to use a custom font that you previously added in your assets folder
 
 ```
 <com.stephenvinouze.linkifiedtextview.FontTextView
+            android:id="@+id/custom_font_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="<your_text>"
+            app:tvFontName="<your_font_name>.<font_name_extension>"/>
+```
+
+Works also for `EditText` :
+
+```
+<com.stephenvinouze.linkifiedtextview.FontTEditText
             android:id="@+id/custom_font_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
